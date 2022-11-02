@@ -10,6 +10,9 @@ import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.navigation.compose.rememberNavController
+import com.prashannar.theplanner.presentation.FirstScreen
+import com.prashannar.theplanner.presentation.navigations.SetupNavGraph
 import com.prashannar.theplanner.ui.theme.ThePlannerTheme
 
 class MainActivity : ComponentActivity() {
@@ -17,27 +20,10 @@ class MainActivity : ComponentActivity() {
         super.onCreate(savedInstanceState)
         setContent {
             ThePlannerTheme {
-                // A surface container using the 'background' color from the theme
-                Surface(
-                    modifier = Modifier.fillMaxSize(),
-                    color = MaterialTheme.colors.background
-                ) {
-                    Greeting("Android")
-                }
+                val navController = rememberNavController()
+                SetupNavGraph(navController = navController)
             }
         }
     }
 }
 
-@Composable
-fun Greeting(name: String) {
-    Text(text = "Hello $name!")
-}
-
-@Preview(showBackground = true)
-@Composable
-fun DefaultPreview() {
-    ThePlannerTheme {
-        Greeting("Android")
-    }
-}

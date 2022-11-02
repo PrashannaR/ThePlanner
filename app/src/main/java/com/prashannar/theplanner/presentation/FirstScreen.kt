@@ -13,6 +13,8 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.text.font.Font
+import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
@@ -44,7 +46,9 @@ fun FirstScreen() {
             modifier = Modifier.align(CenterHorizontally),
             color = Purple,
             fontSize = 35.sp,
-            fontWeight = FontWeight.Bold
+            fontWeight = FontWeight.Bold,
+            fontFamily = FontFamily(Font(R.font.abrilfatface))
+
         )
 
         Spacer(modifier = Modifier.height(0.dp))
@@ -54,7 +58,8 @@ fun FirstScreen() {
             modifier = Modifier.align(CenterHorizontally),
             color = Purple,
             fontSize = 65.sp,
-            fontWeight = FontWeight.Bold
+            fontWeight = FontWeight.Bold,
+            fontFamily = FontFamily(Font(R.font.abrilfatface))
         )
 
         Spacer(modifier = Modifier.height(40.dp))
@@ -65,7 +70,7 @@ fun FirstScreen() {
                 .clip(RoundedCornerShape(30.dp))
                 .align(CenterHorizontally)
                 .fillMaxWidth(.80f)
-                .height(70.dp),
+                .height(60.dp),
             colors = ButtonDefaults.buttonColors(
                 backgroundColor = Orange,
                 contentColor = Color.White
