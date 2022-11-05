@@ -16,16 +16,17 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.Font
 import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.font.FontWeight
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.navigation.NavHostController
 import com.prashannar.theplanner.R
+import com.prashannar.theplanner.presentation.navigations.Screens
 import com.prashannar.theplanner.ui.theme.Orange
 import com.prashannar.theplanner.ui.theme.Purple
 
-@Preview(showSystemUi = true)
+
 @Composable
-fun FirstScreen() {
+fun FirstScreen(navController: NavHostController) {
     Column(
         modifier = Modifier
             .fillMaxSize()
@@ -65,7 +66,7 @@ fun FirstScreen() {
         Spacer(modifier = Modifier.height(40.dp))
 
         Button(
-            onClick = { /*TODO*/ },
+            onClick = { navController.navigate(Screens.TodoDisplay.route) },
             modifier = Modifier
                 .clip(RoundedCornerShape(30.dp))
                 .align(CenterHorizontally)

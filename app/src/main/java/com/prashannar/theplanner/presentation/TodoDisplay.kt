@@ -1,12 +1,13 @@
 package com.prashannar.theplanner.presentation
 
-import androidx.compose.foundation.Image
-import androidx.compose.foundation.background
+import androidx.compose.foundation.*
 import androidx.compose.foundation.layout.*
-import androidx.compose.foundation.rememberScrollState
-import androidx.compose.foundation.verticalScroll
+import androidx.compose.material.FloatingActionButton
+import androidx.compose.material.Icon
 import androidx.compose.material.Text
-import androidx.compose.runtime.Composable
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.Add
+import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Alignment.Companion.CenterHorizontally
 import androidx.compose.ui.Modifier
@@ -15,29 +16,53 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.Font
 import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.font.FontWeight
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.navigation.NavHostController
 import com.prashannar.theplanner.R
+import com.prashannar.theplanner.presentation.navigations.Screens
 import com.prashannar.theplanner.ui.theme.Grey
 import com.prashannar.theplanner.ui.theme.Purple
 
-@Preview(showSystemUi = true)
+
 @Composable
-fun TodoDisplay() {
+fun TodoDisplay(navController: NavHostController) {
     Column(
         modifier = Modifier
             .fillMaxSize()
             .background(Color.White)
             .verticalScroll(rememberScrollState())
     ) {
+        var visibile by remember {
+            mutableStateOf(false)
+        }
+
+        Image(
+            painter = painterResource(id = R.drawable.up),
+            contentDescription = "",
+            modifier = Modifier
+                .padding(start = 12.dp)
+                .size(50.dp)
+
+        )
 
         Row(modifier = Modifier.align(Alignment.End)) {
-            Image(
-                painter = painterResource(id = R.drawable.icon),
-                contentDescription = "",
-                modifier = Modifier.size(100.dp)
-            )
+
+
+            FloatingActionButton(
+                onClick = { visibile = true },
+                backgroundColor = Purple,
+                contentColor = Color.White,
+                modifier = Modifier
+
+                    .padding(end = 16.dp)
+
+            ) {
+                Icon(
+                    Icons.Filled.Add, contentDescription = "",
+                )
+
+            }
         }
 
         Spacer(modifier = Modifier.height(12.dp))
@@ -100,6 +125,37 @@ fun TodoDisplay() {
                 fontWeight = FontWeight.Bold
             )
 
+
+        }
+
+        Image(
+            painter = painterResource(id = R.drawable.taskone),
+            contentDescription = "",
+            modifier = Modifier
+                .align(CenterHorizontally)
+                .size(300.dp)
+
+        )
+
+        Image(
+            painter = painterResource(id = R.drawable.tasktwo),
+            contentDescription = "",
+            modifier = Modifier
+                .align(CenterHorizontally)
+                .size(300.dp)
+
+        )
+
+        if (visibile == true) {
+            Image(
+                painter = painterResource(id = R.drawable.plan),
+                contentDescription = "",
+                modifier = Modifier
+                    .align(CenterHorizontally)
+                    .size(300.dp)
+                    .clickable { navController.navigate(Screens.StoryScreen.route) }
+
+            )
 
         }
 
