@@ -7,6 +7,7 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material.Text
 import androidx.compose.runtime.*
+import androidx.compose.ui.Alignment.Companion.CenterHorizontally
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
@@ -73,19 +74,24 @@ fun StoryScreen() {
 
 
         }
-        var visible by remember{
+        var visible by remember {
             mutableStateOf(false)
         }
 
         Row() {
 
 
-            if(visible == true){
+            if (visible == true) {
                 Text(
                     text = "I wanted to put so much effort on this, ekdum nei fancy ra ramro animated story telling jastei app banauna khojeko they, tara couldn't wait any longer to say this :P.\nEsma bhanne aba, hehe, I LOVE YOU Shreyachu <3",
                     fontWeight = FontWeight.SemiBold,
                     fontSize = 18.sp,
-                    modifier = Modifier.padding(start = 12.dp, top = 12.dp, end = 8.dp, bottom = 12.dp),
+                    modifier = Modifier.padding(
+                        start = 12.dp,
+                        top = 12.dp,
+                        end = 12.dp,
+                        bottom = 12.dp
+                    ),
                     textAlign = TextAlign.Justify
                 )
 
@@ -94,10 +100,22 @@ fun StoryScreen() {
             Image(
                 painter = painterResource(id = R.drawable.cake),
                 contentDescription = "<3",
-                modifier = Modifier.padding(start = 12.dp).clickable {
-                    visible = true
+                modifier = Modifier
+                    .padding(start = 12.dp)
+                    .clickable {
+                        visible = true
 
-                }
+                    }
+            )
+
+        }
+        if (visible) {
+            Image(
+                painter = painterResource(id = R.drawable.ily),
+                contentDescription = "<3",
+                modifier = Modifier
+                    .padding(bottom = 12.dp, start = 12.dp, end = 12.dp)
+                    .align(CenterHorizontally)
             )
 
         }
